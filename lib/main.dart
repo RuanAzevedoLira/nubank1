@@ -1,43 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:nubank/conta/minhaConta.dart';
+import 'package:nubank/home.dart';
+import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 
-void main() => runApp(MyApp());
+Future<void> main() async {
+  const keyApplicationId = 'XzWSLh4ZwOBoevUj7ZLk60X67wmdqMqr50KIm3E9';
+  const keyClientKey = 'e0OInIrh50d98JegF1WodN9HBMO6E0yop9tRx1ae';
+  const keyParseServerUrl = 'https://parseapi.back4app.com';
+  await Parse().initialize(keyApplicationId, keyParseServerUrl,
+      clientKey: keyClientKey, debug: true);
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-  // This widget is the root of your application.
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      // Application name
-      title: 'Flutter Hello World',
-      // Application theme data, you can set the colors for the application as
-      // you want
-      theme: ThemeData(
-        // useMaterial3: false,
-        primarySwatch: Colors.blue,
-      ),
-      // A widget which will be started on application startup
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
+  runApp(const MyApp());
 }
 
-class MyHomePage extends StatelessWidget {
-  final String title;
-  const MyHomePage({super.key, required this.title});  
+class MyApp extends StatefulWidget {
+  const MyApp({super.key});
 
   @override
+  State<MyApp> createState() => _MyStatefulWidgetState();
+}
+
+class _MyStatefulWidgetState extends State<MyApp> {
+  @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        // The title text which will be shown on the action bar
-        title: Text(title),
-      ),
-      body: Center(
-        child: Text(
-          'Hello, World!',
-        ),
-      ),
+    return const MaterialApp(
+      title: "Home",
+      home: Home(),
     );
   }
 }
