@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nubank/home.dart';
 import 'package:nubank/conta/historico.dart';
 import 'package:nubank/conta/saldo/saldo_separado.dart';
+import 'package:nubank/conta/notificacao.dart';
 
 class MinhaConta extends StatelessWidget {
   const MinhaConta({super.key});
@@ -26,6 +27,16 @@ class MinhaConta extends StatelessWidget {
             icon: const Icon(Icons.help_outline),
             onPressed: () {
               // Ação para o ícone de interrogação
+            },
+          ),
+          IconButton(
+            icon: const Icon(Icons.notifications),
+            onPressed: () {
+              // Ação para o ícone de notificação
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Notificacao()),
+              );
             },
           ),
         ],
@@ -70,7 +81,8 @@ class MinhaConta extends StatelessWidget {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Saldo()),
+                        MaterialPageRoute(
+                            builder: (context) => SaldoSeparado()),
                       );
                     },
                   ),
