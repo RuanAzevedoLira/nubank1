@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:nubank/conta/minhaConta.dart';
+import 'package:nubank/conta/saldo/saldo_separado.dart';
 import 'package:nubank/home.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
 

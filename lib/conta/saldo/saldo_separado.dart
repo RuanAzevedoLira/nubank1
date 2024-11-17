@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:nubank/home.dart';
+import 'package:nubank/conta/minhaConta.dart';
 import 'package:nubank/conta/historico.dart';
-import 'package:nubank/conta/saldo/saldo_separado.dart';
 
-class MinhaConta extends StatelessWidget {
-  const MinhaConta({super.key});
+class Saldo extends StatelessWidget {
+  const Saldo({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class MinhaConta extends StatelessWidget {
             // Navegar de volta para a página Home
             Navigator.pushReplacement(
               context,
-              MaterialPageRoute(builder: (context) => const Home()),
+              MaterialPageRoute(builder: (context) => const MinhaConta()),
             );
           },
         ),
@@ -44,7 +44,7 @@ class MinhaConta extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             const Text(
-              'R\$ 1000',
+              'R\$ 9000',
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -68,10 +68,7 @@ class MinhaConta extends StatelessWidget {
                     subtitle: const Text('R\$0,00'),
                     trailing: const Icon(Icons.arrow_forward_ios, size: 16),
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(builder: (context) => Saldo()),
-                      );
+                      // Ação ao clicar no item
                     },
                   ),
                   ListTile(
