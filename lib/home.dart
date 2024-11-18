@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:nubank/conta/minhaConta.dart';
+import 'cartoes_screen.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -15,7 +16,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "AppBar",
+      title: "Nubank",
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xff7801db), // Cor da Nubank
@@ -65,7 +66,7 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MinhaConta()),
+                    MaterialPageRoute(builder: (context) => const MinhaConta()),
                   );
                 },
                 child: Container(
@@ -79,9 +80,9 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Row(
+                        const Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: const [
+                          children: [
                             Text(
                               'Conta',
                               style: TextStyle(
@@ -110,7 +111,14 @@ class _HomeState extends State<Home> {
               _buildActionButtons(),
 
               // Container para "Meus Cartões"
-              Padding(
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const CartoesScreen()),
+                  );
+                },
+              child: Padding(
                 padding: const EdgeInsets.all(16.0),
                 child: Container(
                   width: double.infinity,
@@ -119,14 +127,14 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: const EdgeInsets.all(16.0),
-                  child: Row(
+                  child: const Row(
                     children: [
-                      const Icon(Icons.credit_card,
+                      Icon(Icons.credit_card,
                           size: 25,
                           color: Color(0xff000000)), // Ícone de cartão
-                      const SizedBox(
+                      SizedBox(
                           width: 10), // Espaço entre o ícone e o texto
-                      const Text(
+                      Text(
                         "Meus Cartões",
                         style: TextStyle(
                           fontSize: 14,
@@ -137,6 +145,7 @@ class _HomeState extends State<Home> {
                     ],
                   ),
                 ),
+              ),
               ),
 
               // Container para "Guarde seu dinheiro em caixinhas"
@@ -149,9 +158,9 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: const EdgeInsets.all(16.0),
-                  child: Column(
+                  child: const Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
+                    children: [
                       Text(
                         "Guarde seu dinheiro em caixinhas",
                         style: TextStyle(
@@ -172,6 +181,8 @@ class _HomeState extends State<Home> {
                   ),
                 ),
               ),
+
+              
 
               // Divider para separar as seções
               const Divider(thickness: 1, color: Colors.grey),
@@ -243,9 +254,9 @@ class _HomeState extends State<Home> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
+        const Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: const [
+          children: [
             Text(
               'Cartão de crédito',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
@@ -281,9 +292,9 @@ class _HomeState extends State<Home> {
 
   // Função que cria a seção de Empréstimo
   Widget _buildEmprestimo() {
-    return Column(
+    return const Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: const [
+      children: [
         Text(
           'Empréstimo',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
