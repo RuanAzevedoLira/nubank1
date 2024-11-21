@@ -37,7 +37,7 @@ class CartoesScreen extends StatelessWidget {
                     style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white,
+                      color: Colors.black,
                     ),
                   ),
                 ],
@@ -69,7 +69,7 @@ class CartoesScreen extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.credit_card,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           const SizedBox(width: 16),
                           Column(
@@ -80,14 +80,14 @@ class CartoesScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                               ),
                               Text(
                                 ".... 4321",
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Colors.white70,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
@@ -181,7 +181,7 @@ class CartoesScreen extends StatelessWidget {
                         children: [
                           const Icon(
                             Icons.credit_card,
-                            color: Colors.white,
+                            color: Colors.black,
                           ),
                           const SizedBox(width: 16),
                           Column(
@@ -192,14 +192,14 @@ class CartoesScreen extends StatelessWidget {
                                 style: TextStyle(
                                   fontSize: 16,
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.white,
+                                  color: Colors.black,
                                 ),
                               ),
                               Text(
                                 ".... 1234",
                                 style: TextStyle(
                                   fontSize: 14,
-                                  color: Colors.white70,
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],
@@ -242,7 +242,7 @@ class CartoesScreen extends StatelessWidget {
           ],
         ),
       ),
-      backgroundColor: Colors.black, // Define o fundo da tela como preto
+      backgroundColor: Colors.white, // Define o fundo da tela como branco
     );
   }
 }
