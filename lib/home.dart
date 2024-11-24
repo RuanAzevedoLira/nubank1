@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:nubank/conta/minhaConta.dart';
 import 'cartoes_screen.dart';
+import 'package:nubank/config_nubank/configuracoes.dart';
+import 'package:nubank/conta/faturaCredito.dart';
+import 'package:nubank/seguro_vida.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -16,7 +19,8 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Nubank",
+      debugShowCheckedModeBanner: false,
+      title: "AppBar",
       home: Scaffold(
         appBar: AppBar(
           backgroundColor: const Color(0xff7801db), // Cor da Nubank
@@ -24,6 +28,10 @@ class _HomeState extends State<Home> {
             icon: const Icon(Icons.person_outline),
             color: const Color(0xFFF5F5F5), // Ícone de perfil
             onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Configuracoes()),
+              );
               // Ação ao clicar no ícone de perfil
             },
           ),
@@ -66,7 +74,7 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const MinhaConta()),
+                    MaterialPageRoute(builder: (context) => MinhaConta()),
                   );
                 },
                 child: Container(
@@ -80,9 +88,9 @@ class _HomeState extends State<Home> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        const Row(
+                        Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
+                          children: const [
                             Text(
                               'Conta',
                               style: TextStyle(
@@ -115,37 +123,38 @@ class _HomeState extends State<Home> {
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => const CartoesScreen()),
+                    MaterialPageRoute(
+                        builder: (context) => const CartoesScreen()),
                   );
                 },
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Container(
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    color: Colors.grey[200],
-                    borderRadius: BorderRadius.circular(12),
-                  ),
+                child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: const Row(
-                    children: [
-                      Icon(Icons.credit_card,
-                          size: 25,
-                          color: Color(0xff000000)), // Ícone de cartão
-                      SizedBox(
-                          width: 10), // Espaço entre o ícone e o texto
-                      Text(
-                        "Meus Cartões",
-                        style: TextStyle(
-                          fontSize: 14,
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xff000000),
+                  child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.grey[200],
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    padding: const EdgeInsets.all(16.0),
+                    child: Row(
+                      children: [
+                        const Icon(Icons.credit_card,
+                            size: 25,
+                            color: Color(0xff000000)), // Ícone de cartão
+                        const SizedBox(
+                            width: 10), // Espaço entre o ícone e o texto
+                        const Text(
+                          "Meus Cartões",
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xff000000),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
-              ),
               ),
 
               // Container para "Guarde seu dinheiro em caixinhas"
@@ -158,9 +167,9 @@ class _HomeState extends State<Home> {
                     borderRadius: BorderRadius.circular(12),
                   ),
                   padding: const EdgeInsets.all(16.0),
-                  child: const Column(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
+                    children: const [
                       Text(
                         "Guarde seu dinheiro em caixinhas",
                         style: TextStyle(
@@ -182,15 +191,21 @@ class _HomeState extends State<Home> {
                 ),
               ),
 
-              
-
               // Divider para separar as seções
               const Divider(thickness: 1, color: Colors.grey),
 
               // Seção Cartão de Crédito
-              Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: _buildCartaoCredito(),
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Fatura()),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: _buildCartaoCredito(),
+                ),
               ),
 
               const Divider(thickness: 1, color: Colors.grey),
@@ -254,9 +269,9 @@ class _HomeState extends State<Home> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Row(
+        Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
+          children: const [
             Text(
               'Cartão de crédito',
               style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700),
@@ -292,9 +307,9 @@ class _HomeState extends State<Home> {
 
   // Função que cria a seção de Empréstimo
   Widget _buildEmprestimo() {
-    return const Column(
+    return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
+      children: const [
         Text(
           'Empréstimo',
           style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
@@ -323,69 +338,86 @@ class _HomeState extends State<Home> {
         const SizedBox(height: 10), // Espaço entre o título e a imagem
 
         // Contêiner com a imagem e os textos dentro do retângulo
-        Container(
-          width: double.infinity,
-          decoration: BoxDecoration(
-            color: Colors.grey[200], // Cor do fundo do retângulo
-            borderRadius: BorderRadius.circular(12), // Bordas arredondadas
-          ),
-          child: Column(
-            crossAxisAlignment:
-                CrossAxisAlignment.start, // Alinhamento à esquerda
-            children: [
-              // Imagem integrada ao retângulo
-              ClipRRect(
-                borderRadius: const BorderRadius.only(
-                  topLeft: Radius.circular(12),
-                  topRight: Radius.circular(12),
-                ), // Bordas arredondadas na parte superior
-                child: Image.asset(
-                  'imagens/01.png', // Caminho da imagem
-                  width: double.infinity,
-                  height: 150, // Tamanho da imagem
-                  fit: BoxFit.cover, // A imagem ocupa todo o espaço disponível
+        GestureDetector(
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => SeguroVida()),
+            );
+          },
+          child: Container(
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.grey[200], // Cor do fundo do retângulo
+              borderRadius: BorderRadius.circular(12), // Bordas arredondadas
+            ),
+            child: Column(
+              crossAxisAlignment:
+                  CrossAxisAlignment.start, // Alinhamento à esquerda
+              children: [
+                // Imagem integrada ao retângulo
+                ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(12),
+                    topRight: Radius.circular(12),
+                  ), // Bordas arredondadas na parte superior
+                  child: Image.asset(
+                    'imagens/01.png', // Caminho da imagem
+                    width: double.infinity,
+                    height: 150, // Tamanho da imagem
+                    fit:
+                        BoxFit.cover, // A imagem ocupa todo o espaço disponível
+                  ),
                 ),
-              ),
-              Padding(
-                padding:
-                    const EdgeInsets.all(16.0), // Espaço interno do retângulo
-                child: Column(
-                  crossAxisAlignment:
-                      CrossAxisAlignment.start, // Alinhamento à esquerda
-                  children: [
-                    // Texto "Seguro de Vida"
-                    const Text(
-                      'Seguro de Vida',
-                      style: TextStyle(
-                        fontSize: 16, // Tamanho do texto
-                        fontWeight: FontWeight.bold, // Peso da fonte
-                        color: Colors.black, // Cor do texto
+                Padding(
+                  padding:
+                      const EdgeInsets.all(16.0), // Espaço interno do retângulo
+                  child: Column(
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start, // Alinhamento à esquerda
+                    children: [
+                      // Texto "Seguro de Vida"
+                      const Text(
+                        'Seguro de Vida',
+                        style: TextStyle(
+                          fontSize: 16, // Tamanho do texto
+                          fontWeight: FontWeight.bold, // Peso da fonte
+                          color: Colors.black, // Cor do texto
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 5), // Espaço entre os textos
+                      const SizedBox(height: 5), // Espaço entre os textos
 
-                    // Texto "Cuide bem do que importa."
-                    const Text(
-                      'Cuide bem do que importa.',
-                      style: TextStyle(
-                        fontSize: 14, // Tamanho do texto
-                        color: Colors.grey, // Cor do texto
+                      // Texto "Cuide bem do que importa."
+                      const Text(
+                        'Cuide bem do que importa.',
+                        style: TextStyle(
+                          fontSize: 14, // Tamanho do texto
+                          color: Colors.grey, // Cor do texto
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                        height: 10), // Espaço entre os textos e o botão
+                      const SizedBox(
+                          height: 10), // Espaço entre os textos e o botão
 
-                    // Botão "Conhecer"
-                    ElevatedButton(
-                      onPressed: () {
-                        // Ação ao clicar no botão "Conhecer"
-                      },
-                      child: const Text('Conhecer'),
-                    ),
-                  ],
+                      // Botão "Conhecer"
+                      ElevatedButton(
+                        onPressed: () {
+                          // Ação ao clicar no botão "Conhecer"
+                          onTap:
+                          () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => SeguroVida()),
+                            );
+                          };
+                        },
+                        child: const Text('Conhecer'),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ],

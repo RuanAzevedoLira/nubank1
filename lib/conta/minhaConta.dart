@@ -3,6 +3,7 @@ import 'package:nubank/home.dart';
 import 'package:nubank/conta/historico.dart';
 import 'package:nubank/conta/saldo/saldo_separado.dart';
 import 'package:nubank/conta/notificacao.dart';
+import 'package:nubank/config_nubank/configuracoes.dart';
 
 class MinhaConta extends StatelessWidget {
   const MinhaConta({super.key});
@@ -27,6 +28,16 @@ class MinhaConta extends StatelessWidget {
             icon: const Icon(Icons.help_outline),
             onPressed: () {
               // Ação para o ícone de interrogação
+            },
+          ),
+          IconButton(
+            icon: const Icon(
+                Icons.settings), // Ícone de configurações (engrenagem)
+            onPressed: () {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const Configuracoes()),
+              );
             },
           ),
           IconButton(

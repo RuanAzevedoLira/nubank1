@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nubank/conta/saldo/saldo_separado.dart';
 import 'package:nubank/home.dart';
 import 'package:parse_server_sdk_flutter/parse_server_sdk_flutter.dart';
+import 'package:nubank/cadastro/cpf.dart';
 
 Future<void> main() async {
   const keyApplicationId = 'XzWSLh4ZwOBoevUj7ZLk60X67wmdqMqr50KIm3E9';
@@ -24,8 +25,9 @@ class _MyStatefulWidgetState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Home",
-      home: Home(),
+      home: CPFPage(),
     );
   }
 }

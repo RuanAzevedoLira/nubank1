@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:nubank/home.dart';
 
 class Fatura extends StatelessWidget {
   @override
@@ -7,23 +8,30 @@ class Fatura extends StatelessWidget {
       appBar: AppBar(
         title: Text('Fatura'),
         centerTitle: true,
-        backgroundColor: Colors.black,
+        backgroundColor: Color(0xff7801db),
         elevation: 0,
+        leading: IconButton(
+          icon: const Icon(Icons.close, color: Color(0xffffffff)),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Home()),
+            );
+          },
+        ),
       ),
-      
       body: SingleChildScrollView(
         padding: const EdgeInsets.symmetric(horizontal: 20),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 20),
-            
             ListTile(
               contentPadding: EdgeInsets.zero,
               title: Text(
                 'Fatura fechada',
                 style: TextStyle(
-                  color: Colors.white,
+                  color: Color(0xff000000),
                   fontSize: 20,
                 ),
               ),
@@ -34,7 +42,7 @@ class Fatura extends StatelessWidget {
                   Text(
                     'R\$ 200,00',
                     style: TextStyle(
-                      color: Colors.white,
+                      color: Color(0xff000000),
                       fontSize: 36,
                       fontWeight: FontWeight.bold,
                     ),
@@ -59,7 +67,6 @@ class Fatura extends StatelessWidget {
                 ],
               ),
             ),
-            
             SizedBox(height: 20),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -67,7 +74,7 @@ class Fatura extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.red,
+                    backgroundColor: Color(0xfff61404),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   ),
                   child: Text('Pagar'),
@@ -75,7 +82,7 @@ class Fatura extends StatelessWidget {
                 ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.grey[800],
+                    backgroundColor: Color(0xff000000),
                     padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                   ),
                   child: Text('Parcelar'),
@@ -104,14 +111,15 @@ class Fatura extends StatelessWidget {
               ),
             ),
             Card(
-              color: Colors.grey[900],
+              color: Colors.grey[600],
               elevation: 4,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: Row(
                   children: [
-                    Icon(Icons.no_adult_content , color: Colors.white),
+                    Icon(Icons.no_adult_content, color: Colors.white),
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
@@ -123,13 +131,12 @@ class Fatura extends StatelessWidget {
                 ),
               ),
             ),
-          
             SizedBox(height: 15),
-
             Card(
-              color: Colors.grey[900],
+              color: Colors.grey[600],
               elevation: 4,
-              shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(8)),
               child: Padding(
                 padding: const EdgeInsets.all(15),
                 child: Row(
@@ -157,7 +164,7 @@ class Fatura extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
-          backgroundColor: Colors.grey[800],
+          backgroundColor: Colors.grey[600],
           radius: 25,
           child: Icon(icon, color: Colors.white),
         ),
