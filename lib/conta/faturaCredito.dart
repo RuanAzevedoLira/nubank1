@@ -2,13 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:nubank/home.dart';
 
 class Fatura extends StatelessWidget {
+  const Fatura({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text('Fatura'),
         centerTitle: true,
-        backgroundColor: Color(0xff7801db),
+        backgroundColor: Color(0xb37801db),
         elevation: 0,
         leading: IconButton(
           icon: const Icon(Icons.close, color: Color(0xffffffff)),
@@ -68,27 +69,6 @@ class Fatura extends StatelessWidget {
               ),
             ),
             SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xfff61404),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  ),
-                  child: Text('Pagar'),
-                ),
-                ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xff000000),
-                    padding: EdgeInsets.symmetric(horizontal: 30, vertical: 15),
-                  ),
-                  child: Text('Parcelar'),
-                ),
-              ],
-            ),
             SizedBox(height: 30),
             Divider(color: Colors.grey),
             SizedBox(height: 10),
@@ -100,7 +80,7 @@ class Fatura extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 children: [
                   cIcon('Pagar fatura', Icons.payment),
-                  cIcon('Resumo de faturas', Icons.list),
+                  cIcon('Resumo faturas', Icons.list),
                   cIcon('Converter limite', Icons.swap_horiz),
                   cIcon('Meus limites', Icons.settings),
                   cIcon('Meus cartões', Icons.credit_card),
@@ -111,7 +91,7 @@ class Fatura extends StatelessWidget {
               ),
             ),
             Card(
-              color: Colors.grey[600],
+              color: Color(0xffeeeeee),
               elevation: 4,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
@@ -119,12 +99,12 @@ class Fatura extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: Row(
                   children: [
-                    Icon(Icons.no_adult_content, color: Colors.white),
+                    Icon(Icons.no_adult_content, color: Color(0xff000000)),
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         'Você pode ter limite adicional para usar com NuPay',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Color(0xff000000)),
                       ),
                     ),
                   ],
@@ -133,7 +113,7 @@ class Fatura extends StatelessWidget {
             ),
             SizedBox(height: 15),
             Card(
-              color: Colors.grey[600],
+              color: Color(0xffeeeeee),
               elevation: 4,
               shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(8)),
@@ -141,12 +121,12 @@ class Fatura extends StatelessWidget {
                 padding: const EdgeInsets.all(15),
                 child: Row(
                   children: [
-                    Icon(Icons.money, color: Colors.white),
+                    Icon(Icons.money, color: Color(0xff000000)),
                     SizedBox(width: 10),
                     Expanded(
                       child: Text(
                         'Aumente seu limite enquanto o seu dinheiro rende 100% do CDI',
-                        style: TextStyle(color: Colors.white),
+                        style: TextStyle(color: Color(0xff000000)),
                       ),
                     ),
                   ],
@@ -164,15 +144,15 @@ class Fatura extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         CircleAvatar(
-          backgroundColor: Colors.grey[600],
+          backgroundColor: Color(0xffeeeeee),
           radius: 25,
-          child: Icon(icon, color: Colors.white),
+          child: Icon(icon, color: Color(0xff000000)),
         ),
         SizedBox(height: 5),
         Text(
           label,
           textAlign: TextAlign.center,
-          style: TextStyle(color: Colors.white, fontSize: 12),
+          style: TextStyle(color: Color(0xff000000), fontSize: 12),
         ),
       ],
     );
